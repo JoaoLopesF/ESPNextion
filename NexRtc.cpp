@@ -64,6 +64,13 @@ bool NexRtc::write_rtc_time(char *time)
         sendCommand(cmd.c_str());
         recvRetCommandFinished();
         
+        // Begin changes - JoaoLopesF
+
+        return true;
+
+        // End changes - Joao Lopes
+
+
     }
     else
     {
@@ -118,8 +125,15 @@ bool NexRtc::write_rtc_time(uint32_t *time)
      cmd += "rtc5=";
      cmd += sec;
      sendCommand(cmd.c_str());
-     recvRetCommandFinished();
- 
+
+     // Begin changes - JoaoLopesF
+
+     //recvRetCommandFinished();
+
+     return recvRetCommandFinished();
+
+     // End changes - Joao Lopes
+
 }
 
 bool NexRtc::write_rtc_time(char *time_type,uint32_t number)
@@ -235,6 +249,12 @@ uint32_t NexRtc::read_rtc_time(char *time,uint32_t len)
         }
     }   
   
+    // Begin changes - JoaoLopesF
+
+    return 0; // ?????
+
+    // End changes - Joao Lopes
+
 }
 
 uint32_t NexRtc::read_rtc_time(uint32_t *time,uint32_t len)
@@ -282,6 +302,12 @@ uint32_t NexRtc::read_rtc_time(uint32_t *time,uint32_t len)
        time[i] = time_buf[i];
     }
  
+    // Begin changes - JoaoLopesF
+
+    return 0; // ?????
+
+    // End changes - Joao Lopes
+
 }
 
 

@@ -32,6 +32,20 @@
 #define NEX_RET_INVALID_VARIABLE        (0x1A)
 #define NEX_RET_INVALID_OPERATION       (0x1B)
 
+// Begin changes - JoaoLopesF
+
+#ifdef ESP8266
+
+// SoftwareSerial to ESP8266
+
+#include "ESPSoftwareSerial.h"
+
+SoftwareSerial Serial2(D4, D7);// Nextion TX to D4 and RX to D7
+
+#endif
+
+// End changes - Joao Lopes
+
 /*
  * Receive uint32_t data. 
  * 
@@ -222,8 +236,28 @@ bool nexInit(void)
     bool ret1 = false;
     bool ret2 = false;
     
-    dbSerialBegin(9600);
+    // Joao Lopes - Changes begin - 230400/115200
+
+    // Original code
+    // dbSerialBegin(9600);
+    // nexSerial.begin(9600);
+    // sendCommand("");
+
+#ifdef DEBUG_SERIAL_ENABLE
+    dbSerialBegin(115200);
+#endif
+
     nexSerial.begin(9600);
+
+//  // For 115200 bps - uncomment this
+//
+//    sendCommand("");
+//    sendCommand("baud=115200");
+//
+//    nexSerial.begin(115200);
+
+    // Changes end
+
     sendCommand("");
     sendCommand("bkcmd=1");
     ret1 = recvRetCommandFinished();
@@ -241,6 +275,9 @@ void nexLoop(NexTouch *nex_listen_list[])
     
     while (nexSerial.available() > 0)
     {   
+//    	dbSerialPrint("nexLoop serial aval");
+//    	dbSerialPrintln(nexSerial.available());
+
         delay(10);
         c = nexSerial.read();
         
