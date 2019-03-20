@@ -1,5 +1,12 @@
 @mainpage Home Page
 
+# ESPNextion
+
+This is a fork of ITEADLIB_Arduino_Nextion, to work with ESP8266 and ESP32.
+
+Attention: Please delete the original lib from ITEAD,
+before use this fork.
+
 # Nextion
 
 --------------------------------------------------------------------------------
