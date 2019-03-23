@@ -1,0 +1,14 @@
+{
+  "name": "RemoteDebug",
+  "keywords": "Display, Nextion",
+  "description": "A library to Nextion display for Arduino ESP8266 and ESP32 (forked from ITEADLIB_Arduino_Nextion).",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/JoaoLopesF/ESPNextion.git"
+  },
+  "version": "0.9.0",
+  "frameworks": "arduino",
+  "platforms": "*"
+}
+
